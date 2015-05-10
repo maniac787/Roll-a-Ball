@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody>();
 	}
 	
+	void Update() {
 
+		
+	}
 
 	void FixedUpdate ()
 	{
@@ -19,8 +22,18 @@ public class PlayerController : MonoBehaviour {
 		float moveVertical = Input.GetAxis ("Vertical");
 		
 		Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
-		
+		print (moveHorizontal + "," + moveVertical);
+
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			print ("space key was pressed");
+			movement = new Vector3 (moveHorizontal, 40f, moveVertical);
+		}
+		if(Input.GetKeyDown(KeyCode.LeftShift))
+			rb.velocity = Vector3.zero; 
+
 		rb.AddForce (movement * speed);
+
 	}
 
 
